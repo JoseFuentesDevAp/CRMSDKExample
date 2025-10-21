@@ -170,5 +170,142 @@ public class CRMSDK
     }
 
     	
+        // ========================================
+    // PRODUCT HANDLER EXAMPLES
+    // ========================================
+
+    public static void getProductInfoExample(ServiceClient serviceClient, ProductHandler productHandler)
+    {
+        string productId = "12345678-1234-1234-1234-123456789012"; // Reemplazar con un ID válido
+
+        productHandler.getProductInfo(productId, serviceClient);
+    }
+
+    public static void createProductExample(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        Product product = new Product
+        {
+            ProductNumber = "PROD-001",
+            Name = "Laptop Dell Inspiron 15",
+            Description = "Laptop de alta gama con procesador Intel i7",
+            QuantityDecimal = 2,
+            DefaultUomScheduleId = "Unidad", // Nombre del UOM Schedule
+            DefaultUomId = "Und" // Nombre del UOM
+        };
+
+        productHandler.CreateProduct(product, serviceClient);
+    }
+
+    public static void updateProductExample(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        Product product = new Product
+        {
+            ProductId = "ff29b67d-29aa-f011-bbd3-6045bd003b1e", // Reemplazar con un ID válido
+            Name = "Laptop Dell Inspiron 15 - Actualizado",
+            Description = "Laptop de alta gama con procesador Intel i7 y 16GB RAM",
+            QuantityDecimal = 3
+        };
+
+        productHandler.UpdateProduct(product, serviceClient);
+    }
+
+    public static void deleteProductExample(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        string productId = "ff29b67d-29aa-f011-bbd3-6045bd003b1e"; // Reemplazar con un ID válido
+
+        productHandler.DeleteProduct(productId, serviceClient);
+    }
+
+    public static void getProductsByNameExample(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        productHandler.getProductsByName("Laptop", serviceClient);
+        productHandler.getProductsByName("Mouse", serviceClient);
+    }
+
+    public static void updateProductDescriptionExample(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        productHandler.updateProductDescriptionByNumber("PROD-001", "Nueva descripción del producto", serviceClient);
+    }
+
+    public static void CreateProductsBulk(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        List<Product> products = new List<Product>
+        {
+            new Product
+            {
+                ProductNumber = "PROD-BULK-001",
+                Name = "Mouse Inalámbrico Logitech",
+                Description = "Mouse inalámbrico con sensor óptico",
+                DefaultUomScheduleId = "Unidad",
+                DefaultUomId = "Und",
+                QuantityDecimal = 2
+            },
+            new Product
+            {
+                ProductNumber = "PROD-BULK-002",
+                Name = "Teclado Mecánico RGB",
+                Description = "Teclado mecánico con iluminación RGB",
+                DefaultUomScheduleId = "Unidad",
+                DefaultUomId = "Und",
+                QuantityDecimal = 2
+            },
+            new Product
+            {
+                ProductNumber = "PROD-BULK-003",
+                Name = "Monitor LG 27 pulgadas",
+                Description = "Monitor Full HD con panel IPS",
+                DefaultUomScheduleId = "Unidad",
+                DefaultUomId = "Und",
+                QuantityDecimal = 1
+            }
+        };
+
+        productHandler.CreateProductsBulk(products, serviceClient);
+    }
+
+    public static void createOrUpdateProduct(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        var product1 = new Product
+        {
+            ProductNumber = "ERP-PROD-001",
+            Name = "Laptop HP EliteBook",
+            Description = "Laptop empresarial de alto rendimiento",
+            QuantityDecimal = 2,
+            DefaultUomScheduleId = "Unidad"
+        };
+
+        productHandler.createOrUpdateProduct(product1, serviceClient);
+
+        var product2 = new Product
+        {
+            ProductNumber = "ERP-PROD-002",
+            Name = "Impresora Multifuncional Canon",
+            Description = "Impresora láser a color con escáner",
+            QuantityDecimal = 1,
+            DefaultUomScheduleId = "Unidad"
+        };
+
+        productHandler.createOrUpdateProduct(product2, serviceClient);
+    }
+
+    public static void getProductByFetchXML(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        productHandler.getProductFetch(serviceClient);
+    }
+
+    public static void getProductByNumberFetchXML(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        productHandler.getProductByNumberFetch(serviceClient, "ERP-PROD-002");
+    }
+
+    public static void getProductByNumberFetchXMLLink(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        productHandler.getProductByNumberFetchLinkEntity(serviceClient, "ERP-PROD-002");
+    }
+
+    public static void getProductsByUomScheduleFetchLinkEntity(ProductHandler productHandler, ServiceClient serviceClient)
+    {
+        productHandler.getProductsByUomScheduleFetchLinkEntity(serviceClient, "Unidad");
+    }
 
 }
