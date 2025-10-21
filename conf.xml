@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ClientConfiguration>
+  <ClientId>your-client-id-here</ClientId>
+  <ClientSecret>your-client-secret-here</ClientSecret>
+  <TenantId>your-tenant-id-here</TenantId>
+  <User>usuario@dominio.com</User>
+  <Password>your-password-here</Password>
+  <Resource>https://your-resource-url.com</Resource>
+</ClientConfiguration>
