@@ -1,4 +1,4 @@
-# CRMZTDExample
+# CRMSDKExample
 Proyecto de consola .NET 9 con ejemplos utilizando el SDK
 
 Paquete Nuget para acceder a objetos del SDK
