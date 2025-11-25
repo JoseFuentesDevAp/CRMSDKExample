@@ -87,6 +87,41 @@ public class AccountHandler
         }
     }
 
+    public void getAccountPagination(int pageSize, ServiceClient serviceClient)
+    {
+        Console.WriteLine($"Retrieving accounts with page size: {pageSize}");
+
+        int pageNumber = 1;
+        string pagingCookie = null;
+        bool moreRecords = true;
+
+        while (moreRecords)
+        {
+            QueryExpression query = new QueryExpression("account");
+            query.ColumnSet = new ColumnSet("name", "exchangerate", "telephone1", "address1_country");
+            query.PageInfo = new PagingInfo
+            {
+                Count = pageSize,
+                PageNumber = pageNumber,
+                PagingCookie = pagingCookie
+            };
+
+            EntityCollection accounts = serviceClient.RetrieveMultiple(query);
+
+            foreach (var account in accounts.Entities)
+            {
+                Console.WriteLine($"Account Name: {account["name"]}, Exchange Rate: {account["exchangerate"]}, Country: {account["address1_country"]}");
+            }
+
+            moreRecords = accounts.MoreRecords;
+            if (moreRecords)
+            {
+                pageNumber++;
+                pagingCookie = accounts.PagingCookie;
+            }
+        }
+    }
+
 
     public void updateTelephoneByCountryCode(string countryCode, string phoneCode, ServiceClient serviceClient)
     {

@@ -22,6 +22,7 @@ AccountHandler accountHandler = new AccountHandler();
 //CRMSDK.deleteAccountExample(accountHandler, serviceClient);
 //CRMSDK.updateTelephoneByCountryCodeExample(accountHandler, serviceClient);
 //CRMSDK.CreateAccountsBulk(accountHandler, serviceClient);
+//CRMSDK.getAccountPagination(accountHandler, serviceClient);
 //CRMSDK.getAccountPerCountryExample(accountHandler, serviceClient);
 
 //CREAR O ACTUALIZAR UNA CUENTA BÚSCANDOLA POR CÓDIGO 

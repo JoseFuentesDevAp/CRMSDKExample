@@ -145,6 +145,10 @@ public class CRMSDK
 
     }
 
+    public static void getAccountPagination(AccountHandler accountHandler, ServiceClient serviceClient)
+    {
+        accountHandler.getAccountPagination(5000, serviceClient);
+    }
 
     public static void getAccountByFetchXML(AccountHandler accountHandler, ServiceClient serviceClient)
     {
